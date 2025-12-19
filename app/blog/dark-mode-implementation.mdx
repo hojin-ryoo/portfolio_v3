@@ -1,0 +1,69 @@
+---
+title: Implementing Dark Mode in Web Applications
+date: 2024-03-05
+description: A comprehensive guide to implementing dark mode in modern web applications.
+tags: [css, dark-mode, ui, design]
+categories: [tutorial]
+published: true
+---
+
+# Implementing Dark Mode in Web Applications
+
+Dark mode has become a standard feature in modern web applications. Users prefer it for reduced eye strain and better battery life on OLED displays.
+
+## CSS Variables Approach
+
+Using CSS variables is one of the cleanest ways to implement dark mode:
+
+```css
+:root {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+}
+
+.dark {
+  --bg-color: #1a1a1a;
+  --text-color: #ffffff;
+}
+```
+
+## JavaScript Implementation
+
+Toggle dark mode with JavaScript:
+
+```javascript
+function toggleDarkMode() {
+  document.documentElement.classList.toggle('dark');
+  localStorage.setItem('darkMode', 
+    document.documentElement.classList.contains('dark')
+  );
+}
+```
+
+## React with next-themes
+
+For React applications, `next-themes` provides an excellent solution:
+
+```tsx
+import { ThemeProvider } from 'next-themes';
+
+function App() {
+  return (
+    <ThemeProvider>
+      <YourApp />
+    </ThemeProvider>
+  );
+}
+```
+
+## Best Practices
+
+1. **Respect user preferences** - Check `prefers-color-scheme`
+2. **Persist choice** - Save to localStorage
+3. **Smooth transitions** - Add CSS transitions for theme changes
+4. **Test thoroughly** - Ensure all components work in both modes
+
+## Conclusion
+
+Dark mode implementation doesn't have to be complicated. With the right approach, you can provide a great user experience that respects user preferences.
+

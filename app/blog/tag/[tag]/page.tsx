@@ -1,0 +1,69 @@
+import { notFound } from "next/navigation";
+import { getAllPosts, getPostsByTag, getAllTags } from "@/lib/mdx";
+import { BlogClient } from "@/app/blog/blog-client";
+import { ThemeToggle } from "@/app/components/theme-toggle";
+import Link from "next/link";
+
+interface TagPageProps {
+  params: Promise<{ tag: string }>;
+}
+
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+  const tags = getAllTags(posts);
+  return tags.map((tag) => ({
+    tag: tag,
+  }));
+}
+
+export default async function TagPage({ params }: TagPageProps) {
+  const { tag } = await params;
+  const allPosts = await getAllPosts();
+  const filteredPosts = getPostsByTag(allPosts, tag);
+  const allTags = getAllTags(allPosts);
+  const { getAllCategories } = await import("@/lib/mdx");
+  const categories = getAllCategories(allPosts);
+
+  if (filteredPosts.length === 0) {
+    notFound();
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <header className="sticky top-0 z-10 border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <Link
+              href="/blog"
+              className="text-xl font-bold text-gray-900 dark:text-gray-100"
+            >
+              Portfolio & Blog
+            </Link>
+            <ThemeToggle />
+          </div>
+        </div>
+      </header>
+
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="mb-8">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+            Posts tagged: <span className="text-blue-600 dark:text-blue-400">{tag}</span>
+          </h1>
+          <Link
+            href="/blog"
+            className="text-blue-600 dark:text-blue-400 hover:underline"
+          >
+            ← Back to all posts
+          </Link>
+        </div>
+
+        <BlogClient
+          posts={filteredPosts}
+          tags={allTags}
+          categories={categories}
+        />
+      </main>
+    </div>
+  );
+}
+
