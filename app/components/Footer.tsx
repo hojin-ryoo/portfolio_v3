@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <div className="text-sm text-zinc-600 dark:text-zinc-400">
-            © {currentYear} Portfolio. All rights reserved.
+            © {currentYear} Hojin Ryoo. All rights reserved.
           </div>
           <div className="flex space-x-6">
             <Link
