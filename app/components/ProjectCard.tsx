@@ -29,7 +29,16 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       )}
       <div className="flex flex-1 flex-col p-6">
         <h3 className="mb-2 text-xl font-semibold text-zinc-900 dark:text-zinc-50">
-          {project.title}
+          {project.slug ? (
+            <Link
+              href={`/projects/${project.slug}`}
+              className="hover:text-zinc-600 dark:hover:text-zinc-400 transition-colors"
+            >
+              {project.title}
+            </Link>
+          ) : (
+            project.title
+          )}
         </h3>
         <p className="mb-4 flex-1 text-sm text-zinc-600 dark:text-zinc-400">
           {project.description}
@@ -45,6 +54,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           ))}
         </div>
         <div className="flex gap-4">
+          {project.slug && (
+            <Link
+              href={`/projects/${project.slug}`}
+              className="text-sm font-medium text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50 transition-colors"
+            >
+              Read More →
+            </Link>
+          )}
           {project.githubUrl && (
             <a
               href={project.githubUrl}

@@ -1,5 +1,12 @@
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+
+const contentDirectory = path.join(process.cwd(), "content/projects");
+
 export interface Project {
   id: string;
+  slug: string;
   title: string;
   description: string;
   longDescription?: string;
@@ -8,35 +15,73 @@ export interface Project {
   githubUrl?: string;
   liveUrl?: string;
   featured?: boolean;
+  timestamp?: string;
+  content?: string;
 }
 
-export const projects: Project[] = [
-  {
-    id: "project-1",
-    title: "Sample Project 1",
-    description: "A modern web application built with Next.js and TypeScript.",
-    longDescription: "This is a detailed description of the project, showcasing various features and technologies used.",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
-    featured: true,
-  },
-  {
-    id: "project-2",
-    title: "Sample Project 2",
-    description: "A full-stack application with authentication and database integration.",
-    longDescription: "This project demonstrates advanced features including user authentication, data management, and API integration.",
-    techStack: ["React", "Node.js", "PostgreSQL"],
-    githubUrl: "https://github.com",
-    featured: true,
-  },
-  {
-    id: "project-3",
-    title: "Sample Project 3",
-    description: "A mobile-responsive design system and component library.",
-    longDescription: "A comprehensive design system with reusable components and consistent styling patterns.",
-    techStack: ["React", "Storybook", "CSS"],
-    githubUrl: "https://github.com",
-    liveUrl: "https://example.com",
-  },
-];
+function getAllProjects(): Project[] {
+  if (!fs.existsSync(contentDirectory)) {
+    return [];
+  }
+
+  const fileNames = fs.readdirSync(contentDirectory);
+  const allProjectsData = fileNames
+    .filter((fileName) => fileName.endsWith(".mdx"))
+    .map((fileName) => {
+      const slug = fileName.replace(/\.mdx$/, "");
+      const fullPath = path.join(contentDirectory, fileName);
+      const fileContents = fs.readFileSync(fullPath, "utf8");
+      const { data, content } = matter(fileContents);
+
+      // Map frontmatter fields to Project interface
+      const project: Project = {
+        id: data.filename || slug,
+        slug: data.filename || slug,
+        title: data.title || "",
+        description: data.description || "",
+        techStack: Array.isArray(data.tags) ? data.tags : [],
+        githubUrl: data.githubUrl || undefined,
+        liveUrl: data.liveUrl || undefined,
+        featured: data.featured === true,
+        timestamp: data.timestamp || undefined,
+        content,
+      };
+
+      return project;
+    });
+
+  // Sort by timestamp if available, otherwise by title
+  const sorted = allProjectsData.sort((a, b) => {
+    if (a.timestamp && b.timestamp) {
+      return new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime();
+    }
+    return a.title.localeCompare(b.title);
+  });
+
+  return sorted;
+}
+
+export function getProjectBySlug(slug: string): Project | null {
+  const fullPath = path.join(contentDirectory, `${slug}.mdx`);
+  if (!fs.existsSync(fullPath)) {
+    return null;
+  }
+
+  const fileContents = fs.readFileSync(fullPath, "utf8");
+  const { data, content } = matter(fileContents);
+
+  return {
+    id: data.filename || slug,
+    slug: data.filename || slug,
+    title: data.title || "",
+    description: data.description || "",
+    techStack: Array.isArray(data.tags) ? data.tags : [],
+    githubUrl: data.githubUrl || undefined,
+    liveUrl: data.liveUrl || undefined,
+    featured: data.featured === true,
+    timestamp: data.timestamp || undefined,
+    content,
+  };
+}
+
+export const projects: Project[] = getAllProjects();
