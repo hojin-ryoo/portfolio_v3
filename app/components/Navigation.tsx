@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 
-const HEADER_TITLE = "Hojin Ryoo";
+const HEADER_TITLE = "Hojin Ryoo | AI Engineer";
 
 const navItems = [
   { href: "/", label: "Home" },
