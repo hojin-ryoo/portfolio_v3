@@ -5,30 +5,59 @@ export const metadata = {
 
 export default function About() {
   const skills = [
-    "JavaScript/TypeScript",
-    "React/Next.js",
-    "Node.js",
+    "AI/ML Engineering",
+    "Generative AI",
+    "TypeScript/JavaScript",
     "Python",
-    "HTML/CSS",
-    "Git",
-    "UI/UX Design",
-    "Database Design",
+    "React/Next.js",
+    "Terraform",
+    "Azure Cloud",
+    "Java",
+    "Docker/Kubernetes",
+    "PostgreSQL",
+    "Machine Learning",
+    "Retrieval Augmented Generation (RAG)",
   ];
 
   const experience = [
     {
-      role: "Software Developer",
-      company: "Company Name",
-      period: "2022 - Present",
-      description:
-        "Building modern web applications and contributing to open-source projects.",
+      role: "Lead AI Full Stack Engineer | Senior Associate",
+      company: "PwC",
+      period: "August 2025 - Present",
+      bullets: [
+        "Deliver AI powered solutions to clients",
+        "Develop and deploy multi-tenant cloud infrastructure",
+        "Engineer agents and agentic workflows to solve complex business problems",
+        "Optimize agents through context engineering",
+        "Pilot the latest and greatest tools for software development, productivity, and automation",
+        "Tech Lead for current product",
+      ],
     },
     {
-      role: "Frontend Developer",
-      company: "Previous Company",
-      period: "2020 - 2022",
-      description:
-        "Developed responsive user interfaces and improved user experience.",
+      role: "AI/ML Engineer",
+      company: "General Motors",
+      period: "September 2023 - August 2025",
+      bullets: [
+        "Increased engineering productivity by 80% by engineering a platform for developers to interact with foundational LLM models hosted in Azure, delivering 10 successful proof of concept projects centered around streamlining engineering workflows with Retrieval Augmented Generation (RAG) based LLM solutions",
+        "Reduced deployment durations by 80% by transitioning infrastructure CI/CD pipelines from a proprietary IaC solution to Terraform on Azure, decreasing service downtime by 50%",
+        "Doubled user engagement by developing a no-code model runner for ML models deployed on Databricks, which led to multiple high visibility projects being assigned to our development team",
+        "Achieved a 95% reduction in physics simulation runtime through the development of Multi-Layer Perceptron, GNN, and CatBoost machine learning models, leading to a 20% reduction in high performance compute costs",
+        "Cut data cleaning development time by 40% with a data profiler app that automatically records file metadata during data ingestion, increasing development team productivity by 10%",
+        "Decreased data sourcing time by 80% by developing an application to streamline the complex output of physics simulations and centralize all related data storage, improving engineering productivity by 30%",
+        "Served as a subject matter expert and internal consultant on Generative AI, Machine Learning, and Cloud Computing, regularly meeting with teams and stakeholders to provide strategic guidance and technical insights",
+        "Recognized among the top 5% of engineers company-wide for performance and impact",
+      ],
+    },
+    {
+      role: "Software Engineer",
+      company: "General Motors",
+      period: "May 2021 - August 2023",
+      bullets: [
+        "Enhanced application performance by 20% by spearheading the successful migration of multiple legacy applications from Oracle to PostgreSQL, reducing database licensing costs by $50,000 per project",
+        "Boosted application performance by 30% through the strategic implementation of microservices, batch jobs, event-driven architecture, Docker containerization, and Kubernetes orchestration, increasing positive user feedback by 10%",
+        "Developed applications using Spring Boot, Quarkus, and Angular to streamline data entry and validation for testing",
+        "Recognized among the top 10% of engineers company-wide for performance and impact",
+      ],
     },
   ];
 
@@ -44,13 +73,13 @@ export default function About() {
         <div className="prose prose-zinc dark:prose-invert max-w-none">
           <section className="mb-12">
             <p className="text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-              Hello! I'm a passionate developer who loves building modern web
+              Hello! I&apos;m a passionate developer who loves building modern web
               applications and sharing knowledge through writing. I enjoy
               working with cutting-edge technologies and solving complex
               problems.
             </p>
             <p className="mt-4 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-              When I'm not coding, you can find me reading tech blogs, exploring
+              When I&apos;m not coding, you can find me reading tech blogs, exploring
               new frameworks, or contributing to open-source projects. I believe
               in continuous learning and staying up-to-date with the latest
               industry trends.
@@ -86,9 +115,11 @@ export default function About() {
                   <p className="mt-1 text-sm font-medium text-zinc-600 dark:text-zinc-400">
                     {exp.company} • {exp.period}
                   </p>
-                  <p className="mt-2 text-zinc-600 dark:text-zinc-400">
-                    {exp.description}
-                  </p>
+                  <ul className="mt-3 list-disc space-y-2 pl-5 text-zinc-600 dark:text-zinc-400">
+                    {exp.bullets.map((bullet, bulletIndex) => (
+                      <li key={bulletIndex}>{bullet}</li>
+                    ))}
+                  </ul>
                 </div>
               ))}
             </div>
