@@ -15,10 +15,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio | Developer & Writer",
+  title: "Hojin Ryoo | AI Engineer",
   description: "Personal portfolio and blog showcasing projects, thoughts, and experiences.",
   openGraph: {
-    title: "Portfolio | Developer & Writer",
+    title: "Portfolio | AI Engineer",
     description: "Personal portfolio and blog showcasing projects, thoughts, and experiences.",
     type: "website",
   },
