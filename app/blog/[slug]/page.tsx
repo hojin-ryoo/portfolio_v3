@@ -5,18 +5,35 @@ import remarkGfm from "remark-gfm";
 import Link from "next/link";
 
 export async function generateStaticParams() {
+  // #region agent log
+  fetch('http://127.0.0.1:7242/ingest/b6a20d97-64a6-426e-89c2-df78e9af9d23',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app/blog/[slug]/page.tsx:7',message:'generateStaticParams entry',data:{},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'D'})}).catch(()=>{});
+  // #endregion
   const posts = getAllPosts();
-  return posts.map((post) => ({
+  // #region agent log
+  fetch('http://127.0.0.1:7242/ingest/b6a20d97-64a6-426e-89c2-df78e9af9d23',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app/blog/[slug]/page.tsx:9',message:'posts retrieved',data:{postCount:posts.length,slugs:posts.map(p=>p.slug)},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'D'})}).catch(()=>{});
+  // #endregion
+  const params = posts.map((post) => ({
     slug: post.slug,
   }));
+  // #region agent log
+  fetch('http://127.0.0.1:7242/ingest/b6a20d97-64a6-426e-89c2-df78e9af9d23',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app/blog/[slug]/page.tsx:12',message:'generateStaticParams exit',data:{paramCount:params.length,params},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'D'})}).catch(()=>{});
+  // #endregion
+  return params;
 }
 
 export async function generateMetadata({
   params,
 }: {
-  params: { slug: string };
+  params: { slug: string } | Promise<{ slug: string }>;
 }) {
-  const post = getPostBySlug(params.slug);
+  // #region agent log
+  fetch('http://127.0.0.1:7242/ingest/b6a20d97-64a6-426e-89c2-df78e9af9d23',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app/blog/[slug]/page.tsx:14',message:'generateMetadata entry',data:{paramsIsPromise:params instanceof Promise},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'E'})}).catch(()=>{});
+  // #endregion
+  const resolvedParams = params instanceof Promise ? await params : params;
+  // #region agent log
+  fetch('http://127.0.0.1:7242/ingest/b6a20d97-64a6-426e-89c2-df78e9af9d23',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app/blog/[slug]/page.tsx:20',message:'params resolved',data:{slug:resolvedParams.slug},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'E'})}).catch(()=>{});
+  // #endregion
+  const post = getPostBySlug(resolvedParams.slug);
 
   if (!post) {
     return {
@@ -30,13 +47,29 @@ export async function generateMetadata({
   };
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = getPostBySlug(params.slug);
+export default async function BlogPost({ params }: { params: { slug: string } | Promise<{ slug: string }> }) {
+  // #region agent log
+  fetch('http://127.0.0.1:7242/ingest/b6a20d97-64a6-426e-89c2-df78e9af9d23',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app/blog/[slug]/page.tsx:33',message:'BlogPost entry',data:{paramsIsPromise:params instanceof Promise},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'E'})}).catch(()=>{});
+  // #endregion
+  const resolvedParams = params instanceof Promise ? await params : params;
+  // #region agent log
+  fetch('http://127.0.0.1:7242/ingest/b6a20d97-64a6-426e-89c2-df78e9af9d23',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app/blog/[slug]/page.tsx:36',message:'params resolved in BlogPost',data:{slug:resolvedParams.slug},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'E'})}).catch(()=>{});
+  // #endregion
+  const post = getPostBySlug(resolvedParams.slug);
+  // #region agent log
+  fetch('http://127.0.0.1:7242/ingest/b6a20d97-64a6-426e-89c2-df78e9af9d23',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app/blog/[slug]/page.tsx:39',message:'post retrieved',data:{postFound:!!post,slug:resolvedParams.slug},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
+  // #endregion
 
   if (!post) {
+    // #region agent log
+    fetch('http://127.0.0.1:7242/ingest/b6a20d97-64a6-426e-89c2-df78e9af9d23',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app/blog/[slug]/page.tsx:37',message:'post not found, calling notFound()',data:{slug:resolvedParams.slug},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
+    // #endregion
     notFound();
   }
 
+  // #region agent log
+  fetch('http://127.0.0.1:7242/ingest/b6a20d97-64a6-426e-89c2-df78e9af9d23',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'app/blog/[slug]/page.tsx:42',message:'formatting date',data:{postDate:post.date,dateIsValid:!!post.date},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
+  // #endregion
   const formattedDate = new Date(post.date).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
