@@ -28,10 +28,10 @@ export default function Contact() {
                     Email
                   </h3>
                   <a
-                    href="mailto:your.email@example.com"
+                    href="mailto:hryoo2004@gmail.com"
                     className="mt-1 block text-zinc-900 hover:text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 transition-colors"
                   >
-                    your.email@example.com
+                    hryoo2004@gmail.com
                   </a>
                 </div>
                 <div>
@@ -39,12 +39,12 @@ export default function Contact() {
                     GitHub
                   </h3>
                   <a
-                    href="https://github.com"
+                    href="https://github.com/hojin-ryoo"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-1 block text-zinc-900 hover:text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 transition-colors"
                   >
-                    github.com/username
+                    github.com/hojin-ryoo
                   </a>
                 </div>
                 <div>
@@ -52,12 +52,12 @@ export default function Contact() {
                     LinkedIn
                   </h3>
                   <a
-                    href="https://linkedin.com"
+                    href="https://www.linkedin.com/in/hojinryoo/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="mt-1 block text-zinc-900 hover:text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 transition-colors"
                   >
-                    linkedin.com/in/username
+                    linkedin.com/in/hojinryoo/
                   </a>
                 </div>
               </div>
