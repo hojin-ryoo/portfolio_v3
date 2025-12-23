@@ -109,3 +109,13 @@ pre code {
 .animate-gradient {
   animation: gradient 3s ease infinite;
 }
+
+/* Hide scrollbar for scroll container */
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
