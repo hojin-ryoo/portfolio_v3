@@ -3,6 +3,7 @@ import { getAllPosts } from "@/lib/mdx";
 import { projects } from "@/lib/projects";
 import ProjectCard from "./components/ProjectCard";
 import BlogCard from "./components/BlogCard";
+import TypingText from "./components/TypingText";
 
 export default function Home() {
   const featuredProjects = projects.filter((p) => p.featured).slice(0, 3);
@@ -13,13 +14,17 @@ export default function Home() {
       {/* Hero Section */}
       <section className="mx-auto max-w-7xl px-4 py-24 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-900 sm:text-6xl dark:text-zinc-50">
-            Welcome to My Portfolio
+          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl font-[family-name:var(--font-outfit)]">
+            <span className="bg-gradient-to-r from-orange-500 via-white to-orange-500 bg-[length:200%_auto] bg-clip-text text-transparent animate-gradient dark:from-orange-400 dark:via-white dark:to-orange-400">
+              Welcome!
+            </span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            I'm a developer passionate about building modern web applications
-            and sharing knowledge through writing. Explore my projects and read
-            my latest thoughts.
+            <TypingText
+              text="I'm an engineer passionate about building AI solutions. Explore my projects and read my latest updates."
+              speed={20}
+              delay={500}
+            />
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Link
