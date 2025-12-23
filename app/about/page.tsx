@@ -5,18 +5,27 @@ export const metadata = {
 
 export default function About() {
   const skills = [
-    "AI/ML Engineering",
     "Generative AI",
     "TypeScript/JavaScript",
     "Python",
     "React/Next.js",
     "Terraform",
-    "Azure Cloud",
+    "Azure",
+    "AWS",
+    "GCP",
     "Java",
-    "Docker/Kubernetes",
+    "Docker",
+    "Kubernetes",
     "PostgreSQL",
     "Machine Learning",
-    "Retrieval Augmented Generation (RAG)",
+    "git",
+    "DevOps",
+    "Quarkus",
+    "Angular",
+    "Spring Boot",
+    "Databricks",
+    "SQL",
+    "Cursor"
   ];
 
   const experience = [

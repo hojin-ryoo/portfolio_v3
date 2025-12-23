@@ -37,9 +37,9 @@ export default function DebugInspector() {
         ).map(r => r.cssText);
         return { sheetIndex: idx, href: sheet.href, rules };
       } catch (e) {
-        return { sheetIndex: idx, href: sheet.href, error: 'Cannot access' };
+        return { sheetIndex: idx, href: sheet.href, error: 'Cannot access' as const };
       }
-    }).filter(s => s.rules?.length > 0 || s.error);
+    }).filter(s => (s.rules && s.rules.length > 0) || 'error' in s);
     fetch('http://127.0.0.1:7242/ingest/bd3d450a-adf4-4e87-8d53-ce253c2d609c',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'debug-inspector.tsx:40',message:'CSS rules containing hero-gradient',data:{stylesheets:cssRules},timestamp:Date.now(),sessionId:'debug-session',runId:'initial',hypothesisId:'C,E'})}).catch(()=>{});
     // #endregion
   }, []);

@@ -1,11 +1,10 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
-import type { MDXRemoteSerializeResult } from "next-mdx-remote";
 
 interface MDXContentProps {
-  mdxSource: MDXRemoteSerializeResult;
+  source: string;
 }
 
-export function MDXContent({ mdxSource }: MDXContentProps) {
-  return <MDXRemote {...mdxSource} />;
+export function MDXContent({ source }: MDXContentProps) {
+  return <MDXRemote source={source} />;
 }
 

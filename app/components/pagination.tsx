@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 interface PaginationProps {
   currentPage: number;
@@ -9,20 +9,16 @@ interface PaginationProps {
   basePath?: string;
 }
 
-export function Pagination({
+function PaginationContent({
   currentPage,
   totalPages,
   basePath = "/blog",
 }: PaginationProps) {
-  const searchParams = useSearchParams();
-  const queryString = searchParams.toString();
-  const query = queryString ? `?${queryString}` : "";
-
   const getPageUrl = (page: number) => {
     if (page === 1) {
-      return `${basePath}${query}`;
+      return basePath;
     }
-    return `${basePath}/page/${page}${query}`;
+    return `${basePath}/page/${page}`;
   };
 
   if (totalPages <= 1) return null;
@@ -81,6 +77,14 @@ export function Pagination({
         </Link>
       )}
     </nav>
+  );
+}
+
+export function Pagination(props: PaginationProps) {
+  return (
+    <Suspense fallback={null}>
+      <PaginationContent {...props} />
+    </Suspense>
   );
 }
 

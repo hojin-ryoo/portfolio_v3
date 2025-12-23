@@ -10,6 +10,8 @@ export interface BlogPost {
   date: string;
   description: string;
   content: string;
+  tags?: string[];
+  category?: string;
 }
 
 export function getAllPosts(): BlogPost[] {
@@ -44,6 +46,8 @@ export function getAllPosts(): BlogPost[] {
         date: data.date || "",
         description: data.description || "",
         content,
+        tags: data.tags || [],
+        category: data.category || "",
       } as BlogPost;
     });
 
@@ -87,9 +91,47 @@ export function getPostBySlug(slug: string): BlogPost | null {
     date: data.date || "",
     description: data.description || "",
     content,
+    tags: data.tags || [],
+    category: data.category || "",
   } as BlogPost;
   // #region agent log
   fetch('http://127.0.0.1:7242/ingest/b6a20d97-64a6-426e-89c2-df78e9af9d23',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'lib/mdx.ts:66',message:'getPostBySlug exit',data:{slug,resultDate:result.date,resultTitle:result.title},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
   // #endregion
   return result;
+}
+
+export function getAllTags(posts: BlogPost[]): string[] {
+  const tagsSet = new Set<string>();
+  posts.forEach((post) => {
+    if (post.tags) {
+      post.tags.forEach((tag) => tagsSet.add(tag));
+    }
+  });
+  return Array.from(tagsSet).sort();
+}
+
+export function getAllCategories(posts: BlogPost[]): string[] {
+  const categoriesSet = new Set<string>();
+  posts.forEach((post) => {
+    if (post.category) {
+      categoriesSet.add(post.category);
+    }
+    // Also treat tags as categories if no explicit category
+    if (!post.category && post.tags) {
+      post.tags.forEach((tag) => categoriesSet.add(tag));
+    }
+  });
+  return Array.from(categoriesSet).filter(c => c !== "").sort();
+}
+
+export function getPostsByTag(posts: BlogPost[], tag: string): BlogPost[] {
+  return posts.filter((post) => post.tags && post.tags.includes(tag));
+}
+
+export function getPostsByCategory(posts: BlogPost[], category: string): BlogPost[] {
+  return posts.filter((post) => {
+    if (post.category === category) return true;
+    // Also check tags as fallback
+    return post.tags && post.tags.includes(category);
+  });
 }
