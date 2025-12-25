@@ -1,5 +1,6 @@
 import { projects } from "@/lib/projects";
 import ProjectCard from "../components/ProjectCard";
+import ProjectsSubtitle from "./projects-client";
 
 export const metadata = {
   title: "Projects | Portfolio",
@@ -16,9 +17,7 @@ export default function Projects() {
               Projects
             </span>
           </h1>
-          <p className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">
-            A collection of my work and side projects
-          </p>
+          <ProjectsSubtitle />
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">

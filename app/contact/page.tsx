@@ -1,4 +1,5 @@
 import ContactForm from "../components/contact-form";
+import ContactSubtitle from "./contact-client";
 
 export const metadata = {
   title: "Contact | Portfolio",
@@ -15,9 +16,7 @@ export default function Contact() {
               Get In Touch
             </span>
           </h1>
-          <p className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">
-            I&apos;d love to hear from you. Send me a message and I&apos;ll respond as soon as possible.
-          </p>
+          <ContactSubtitle />
         </div>
 
         <div className="mx-auto max-w-2xl">

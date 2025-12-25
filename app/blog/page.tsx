@@ -1,5 +1,6 @@
 import { getAllPosts } from "@/lib/mdx";
 import BlogCard from "../components/BlogCard";
+import BlogSubtitle from "./blog-client";
 
 export const metadata = {
   title: "Blog | Portfolio",
@@ -18,9 +19,7 @@ export default function Blog() {
               Blog
             </span>
           </h1>
-          <p className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">
-            Thoughts, tutorials, and insights
-          </p>
+          <BlogSubtitle />
         </div>
 
         {posts.length > 0 ? (

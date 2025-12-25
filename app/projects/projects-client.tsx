@@ -2,14 +2,15 @@
 
 import TypingText from "../components/TypingText";
 
-export default function BlogSubtitle() {
+export default function ProjectsSubtitle() {
   return (
     <p className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">
       <TypingText 
-        text="Thoughts, tutorials, and insights"
+        text="A collection of my work and side projects"
         speed={30}
-        cursorColor="#eab308"
+        cursorColor="#22c55e"
       />
     </p>
   );
 }
+

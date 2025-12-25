@@ -1,9 +1,7 @@
-import { SKILLS } from "../constants/skills";
+"use client";
 
-export const metadata = {
-  title: "About | Portfolio",
-  description: "Learn more about my background, skills, and experience.",
-};
+import { SKILLS } from "../constants/skills";
+import TypingText from "../components/TypingText";
 
 export default function About() {
 
@@ -63,14 +61,19 @@ export default function About() {
         <div className="prose prose-zinc dark:prose-invert max-w-none">
           <section className="mb-12">
             <p className="text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-              Hello! I&apos;m a passionate developer who loves building modern AI systems. I enjoy
-              working with cutting-edge technologies and solving complex businessproblems.
+              <TypingText 
+                text="Hello! I'm a passionate developer who loves building modern AI systems. I enjoy working with cutting-edge technologies and solving complex business problems."
+                speed={30}
+                cursorColor="#a855f7"
+              />
             </p>
             <p className="mt-4 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-              When I&apos;m not coding, you can find me reading tech blogs, exploring
-              new frameworks, or contributing to open-source projects. I believe
-              in continuous learning and staying up-to-date with the latest
-              industry trends.
+              <TypingText 
+                text="When I'm not coding, you can find me reading tech blogs, exploring new frameworks, or contributing to open-source projects. I believe in continuous learning and staying up-to-date with the latest industry trends."
+                speed={30}
+                delay={4500}
+                cursorColor="#a855f7"
+              />
             </p>
           </section>
 

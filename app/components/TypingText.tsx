@@ -7,6 +7,7 @@ interface TypingTextProps {
   speed?: number;
   className?: string;
   delay?: number;
+  cursorColor?: string;
 }
 
 export default function TypingText({
@@ -14,6 +15,7 @@ export default function TypingText({
   speed = 30,
   className = "",
   delay = 0,
+  cursorColor = "#f97316",
 }: TypingTextProps) {
   const [displayedText, setDisplayedText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -51,7 +53,10 @@ export default function TypingText({
       <span className="absolute top-0 left-0 right-0">
         {displayedText}
         {currentIndex < text.length && (
-          <span className="animate-pulse inline-block w-1 h-5 bg-orange-500 ml-0.5 align-middle" />
+          <span 
+            className="animate-pulse inline-block w-1 h-5 ml-0.5 align-middle"
+            style={{ backgroundColor: cursorColor }}
+          />
         )}
       </span>
     </span>
