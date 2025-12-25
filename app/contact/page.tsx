@@ -10,8 +10,10 @@ export default function Contact() {
     <div className="bg-white dark:bg-black">
       <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Get In Touch
+          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl font-[family-name:var(--font-outfit)]">
+            <span className="bg-gradient-to-r from-red-500 via-white to-red-500 bg-[length:200%_auto] bg-clip-text text-transparent animate-gradient dark:from-red-400 dark:via-white dark:to-red-400">
+              Get In Touch
+            </span>
           </h1>
           <p className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">
             I&apos;d love to hear from you. Send me a message and I&apos;ll respond as soon as possible.

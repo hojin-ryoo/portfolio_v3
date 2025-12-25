@@ -53,8 +53,10 @@ export default function About() {
     <div className="bg-white dark:bg-black">
       <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="mb-12">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            About Me
+          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl font-[family-name:var(--font-outfit)]">
+            <span className="bg-gradient-to-r from-purple-500 via-white to-purple-500 bg-[length:200%_auto] bg-clip-text text-transparent animate-gradient dark:from-purple-400 dark:via-white dark:to-purple-400">
+              About Me
+            </span>
           </h1>
         </div>
 

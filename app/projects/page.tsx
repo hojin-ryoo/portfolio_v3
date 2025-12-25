@@ -11,8 +11,10 @@ export default function Projects() {
     <div className="bg-white dark:bg-black">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Projects
+          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl font-[family-name:var(--font-outfit)]">
+            <span className="bg-gradient-to-r from-green-500 via-white to-green-500 bg-[length:200%_auto] bg-clip-text text-transparent animate-gradient dark:from-green-400 dark:via-white dark:to-green-400">
+              Projects
+            </span>
           </h1>
           <p className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">
             A collection of my work and side projects

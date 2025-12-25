@@ -13,8 +13,10 @@ export default function Blog() {
     <div className="bg-white dark:bg-black">
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="mb-12 text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            Blog
+          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl font-[family-name:var(--font-outfit)]">
+            <span className="bg-gradient-to-r from-yellow-500 via-white to-yellow-500 bg-[length:200%_auto] bg-clip-text text-transparent animate-gradient dark:from-yellow-400 dark:via-white dark:to-yellow-400">
+              Blog
+            </span>
           </h1>
           <p className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">
             Thoughts, tutorials, and insights
