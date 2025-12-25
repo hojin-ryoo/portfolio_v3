@@ -1,3 +1,5 @@
+import ContactForm from "../components/contact-form";
+
 export const metadata = {
   title: "Contact | Portfolio",
   description: "Get in touch with me.",
@@ -18,6 +20,13 @@ export default function Contact() {
 
         <div className="mx-auto max-w-2xl">
           <div className="space-y-8">
+            <div className="rounded-lg border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
+              <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50">
+                Send a Message
+              </h2>
+              <ContactForm />
+            </div>
+
             <div className="rounded-lg border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
               <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50">
                 Contact Information
@@ -61,17 +70,6 @@ export default function Contact() {
                   </a>
                 </div>
               </div>
-            </div>
-
-            <div className="rounded-lg border border-zinc-200 bg-white p-6 dark:border-zinc-800 dark:bg-zinc-900">
-              <h2 className="mb-4 text-xl font-semibold text-zinc-900 dark:text-zinc-50">
-                Send a Message
-              </h2>
-              <p className="text-zinc-600 dark:text-zinc-400">
-                Feel free to reach out via email or connect with me on social media.
-                I'm always open to discussing new projects, creative ideas, or
-                opportunities to be part of your visions.
-              </p>
             </div>
           </div>
         </div>
