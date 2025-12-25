@@ -14,7 +14,7 @@ export default function Contact() {
             Get In Touch
           </h1>
           <p className="mt-2 text-lg text-zinc-600 dark:text-zinc-400">
-            I'd love to hear from you. Send me a message and I'll respond as soon as possible.
+            I&apos;d love to hear from you. Send me a message and I&apos;ll respond as soon as possible.
           </p>
         </div>
 
@@ -32,17 +32,6 @@ export default function Contact() {
                 Contact Information
               </h2>
               <div className="space-y-4">
-                <div>
-                  <h3 className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
-                    Email
-                  </h3>
-                  <a
-                    href="mailto:hryoo2004@gmail.com"
-                    className="mt-1 block text-zinc-900 hover:text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 transition-colors"
-                  >
-                    hryoo2004@gmail.com
-                  </a>
-                </div>
                 <div>
                   <h3 className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
                     GitHub
@@ -67,6 +56,19 @@ export default function Contact() {
                     className="mt-1 block text-zinc-900 hover:text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 transition-colors"
                   >
                     linkedin.com/in/hojinryoo/
+                  </a>
+                </div>
+                <div>
+                  <h3 className="text-sm font-medium text-zinc-500 dark:text-zinc-400">
+                    X (Twitter)
+                  </h3>
+                  <a
+                    href="https://x.com/hojinryoo"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-1 block text-zinc-900 hover:text-zinc-600 dark:text-zinc-50 dark:hover:text-zinc-300 transition-colors"
+                  >
+                    x.com/hojinryoo
                   </a>
                 </div>
               </div>
