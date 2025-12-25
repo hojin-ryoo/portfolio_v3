@@ -42,11 +42,18 @@ export default function TypingText({
   }, [currentIndex, text, speed, hasStarted]);
 
   return (
-    <span className={className}>
-      {displayedText}
-      {currentIndex < text.length && (
-        <span className="animate-pulse inline-block w-1 h-5 bg-orange-500 ml-0.5 align-middle" />
-      )}
+    <span className={`${className} relative inline-block`}>
+      {/* Invisible text to reserve space and prevent layout shift */}
+      <span className="invisible" aria-hidden="true">
+        {text}
+      </span>
+      {/* Visible typing text positioned absolutely */}
+      <span className="absolute top-0 left-0 right-0">
+        {displayedText}
+        {currentIndex < text.length && (
+          <span className="animate-pulse inline-block w-1 h-5 bg-orange-500 ml-0.5 align-middle" />
+        )}
+      </span>
     </span>
   );
 }
