@@ -1,32 +1,11 @@
+import { SKILLS } from "../constants/skills";
+
 export const metadata = {
   title: "About | Portfolio",
   description: "Learn more about my background, skills, and experience.",
 };
 
 export default function About() {
-  const skills = [
-    "Generative AI",
-    "TypeScript/JavaScript",
-    "Python",
-    "React/Next.js",
-    "Terraform",
-    "Azure",
-    "AWS",
-    "GCP",
-    "Java",
-    "Docker",
-    "Kubernetes",
-    "PostgreSQL",
-    "Machine Learning",
-    "git",
-    "DevOps",
-    "Quarkus",
-    "Angular",
-    "Spring Boot",
-    "Databricks",
-    "SQL",
-    "Cursor"
-  ];
 
   const experience = [
     {
@@ -82,10 +61,8 @@ export default function About() {
         <div className="prose prose-zinc dark:prose-invert max-w-none">
           <section className="mb-12">
             <p className="text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-              Hello! I&apos;m a passionate developer who loves building modern web
-              applications and sharing knowledge through writing. I enjoy
-              working with cutting-edge technologies and solving complex
-              problems.
+              Hello! I&apos;m a passionate developer who loves building modern AI systems. I enjoy
+              working with cutting-edge technologies and solving complex businessproblems.
             </p>
             <p className="mt-4 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
               When I&apos;m not coding, you can find me reading tech blogs, exploring
@@ -100,7 +77,7 @@ export default function About() {
               Skills
             </h2>
             <div className="flex flex-wrap gap-3">
-              {skills.map((skill) => (
+              {SKILLS.map((skill) => (
                 <span
                   key={skill}
                   className="rounded-full bg-zinc-100 px-4 py-2 text-sm font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
