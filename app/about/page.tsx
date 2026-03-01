@@ -79,22 +79,6 @@ export default function About() {
 
           <section className="mb-12">
             <h2 className="mb-6 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
-              Skills
-            </h2>
-            <div className="flex flex-wrap gap-3">
-              {SKILLS.map((skill) => (
-                <span
-                  key={skill}
-                  className="rounded-full bg-zinc-100 px-4 py-2 text-sm font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </section>
-
-          <section>
-            <h2 className="mb-6 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
               Experience
             </h2>
             <div className="space-y-8">
@@ -112,6 +96,22 @@ export default function About() {
                     ))}
                   </ul>
                 </div>
+              ))}
+            </div>
+          </section>
+
+          <section>
+            <h2 className="mb-6 text-2xl font-semibold text-zinc-900 dark:text-zinc-50">
+              Skills
+            </h2>
+            <div className="flex flex-wrap gap-3">
+              {SKILLS.map((skill) => (
+                <span
+                  key={skill}
+                  className="rounded-full bg-zinc-100 px-4 py-2 text-sm font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"
+                >
+                  {skill}
+                </span>
               ))}
             </div>
           </section>
