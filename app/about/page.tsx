@@ -7,16 +7,15 @@ export default function About() {
 
   const experience = [
     {
-      role: "Lead AI Full Stack Engineer | Senior Associate",
+      role: "Lead AI Engineer | Senior Associate",
       company: "PwC",
       period: "August 2025 - Present",
       bullets: [
-        "Deliver AI powered solutions to clients",
-        "Develop and deploy multi-tenant cloud infrastructure",
-        "Engineer agents and agentic workflows to solve complex business problems",
-        "Optimize agents through context engineering",
-        "Pilot the latest and greatest tools for software development, productivity, and automation",
-        "Tech Lead for current product",
+        "Spearhead the rapid, month-to-month development of proof-of-concept (POC) applications, leveraging cutting-edge AI to drive innovation for the firm and its clients.",
+        "Serve as a firm-wide Subject Matter Expert (SME) on Artificial Intelligence, providing expert guidance on AI strategy, industry trends, and practical applications to enhance productivity.",
+        "Design, develop, and implement robust, end-to-end systems utilizing AI coding agents and covering all stages of the software development lifecycle.",
+        "Facilitate \"The Vibe,\" an immersive workshop experience for internal teams and external clients, demonstrating the value and application of AI productivity and development tools.",
+        "Act as a first-wave adopter and evaluator for newly procured AI technologies, identifying opportunities to transform and optimize internal workstreams.",
       ],
     },
     {
