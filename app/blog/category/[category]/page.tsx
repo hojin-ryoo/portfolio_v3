@@ -3,6 +3,7 @@ import { getAllPosts, getPostsByCategory, getAllCategories } from "@/lib/mdx";
 import { BlogClient } from "@/app/blog/blog-client";
 import { ThemeToggle } from "@/app/components/theme-toggle";
 import Link from "next/link";
+import type { BlogPostMetadata } from "@/types/blog";
 
 interface CategoryPageProps {
   params: Promise<{ category: string }>;
@@ -27,6 +28,18 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   if (filteredPosts.length === 0) {
     notFound();
   }
+
+  // Transform posts to BlogPostMetadata format
+  const transformedPosts: BlogPostMetadata[] = filteredPosts.map((post) => ({
+    slug: post.slug,
+    frontmatter: {
+      title: post.title,
+      date: post.date,
+      description: post.description,
+      tags: post.tags,
+      categories: post.category ? [post.category] : [],
+    },
+  }));
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -58,7 +71,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         </div>
 
         <BlogClient
-          posts={filteredPosts}
+          posts={transformedPosts}
           tags={tags}
           categories={allCategories}
         />

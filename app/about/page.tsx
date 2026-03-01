@@ -1,23 +1,9 @@
-export const metadata = {
-  title: "About | Portfolio",
-  description: "Learn more about my background, skills, and experience.",
-};
+"use client";
+
+import { SKILLS } from "../constants/skills";
+import TypingText from "../components/TypingText";
 
 export default function About() {
-  const skills = [
-    "AI/ML Engineering",
-    "Generative AI",
-    "TypeScript/JavaScript",
-    "Python",
-    "React/Next.js",
-    "Terraform",
-    "Azure Cloud",
-    "Java",
-    "Docker/Kubernetes",
-    "PostgreSQL",
-    "Machine Learning",
-    "Retrieval Augmented Generation (RAG)",
-  ];
 
   const experience = [
     {
@@ -65,24 +51,29 @@ export default function About() {
     <div className="bg-white dark:bg-black">
       <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="mb-12">
-          <h1 className="text-4xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
-            About Me
+          <h1 className="text-4xl font-bold tracking-tight sm:text-6xl font-[family-name:var(--font-outfit)]">
+            <span className="bg-gradient-to-r from-purple-500 via-white to-purple-500 bg-[length:200%_auto] bg-clip-text text-transparent animate-gradient dark:from-purple-400 dark:via-white dark:to-purple-400">
+              About Me
+            </span>
           </h1>
         </div>
 
         <div className="prose prose-zinc dark:prose-invert max-w-none">
           <section className="mb-12">
             <p className="text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-              Hello! I&apos;m a passionate developer who loves building modern web
-              applications and sharing knowledge through writing. I enjoy
-              working with cutting-edge technologies and solving complex
-              problems.
+              <TypingText 
+                text="Hello! I'm a passionate developer who loves building modern AI systems. I enjoy working with cutting-edge technologies and solving complex business problems."
+                speed={30}
+                cursorColor="#a855f7"
+              />
             </p>
             <p className="mt-4 text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-              When I&apos;m not coding, you can find me reading tech blogs, exploring
-              new frameworks, or contributing to open-source projects. I believe
-              in continuous learning and staying up-to-date with the latest
-              industry trends.
+              <TypingText 
+                text="When I'm not coding, you can find me reading tech blogs, exploring new frameworks, or contributing to open-source projects. I believe in continuous learning and staying up-to-date with the latest industry trends."
+                speed={30}
+                delay={4500}
+                cursorColor="#a855f7"
+              />
             </p>
           </section>
 
@@ -91,7 +82,7 @@ export default function About() {
               Skills
             </h2>
             <div className="flex flex-wrap gap-3">
-              {skills.map((skill) => (
+              {SKILLS.map((skill) => (
                 <span
                   key={skill}
                   className="rounded-full bg-zinc-100 px-4 py-2 text-sm font-medium text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300"

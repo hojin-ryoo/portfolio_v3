@@ -1,19 +1,22 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { Suspense } from "react";
 
 interface TagFilterProps {
   tags: string[];
   type?: "tag" | "category";
 }
 
-export function TagFilter({ tags, type = "tag" }: TagFilterProps) {
+function TagFilterContent({ tags, type = "tag" }: TagFilterProps) {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const activeTag = searchParams.get(type);
-
   const basePath = type === "tag" ? "/blog/tag" : "/blog/category";
+  
+  // Extract active tag from pathname instead of search params
+  const activeTag = pathname?.startsWith(basePath) 
+    ? pathname.split('/').pop() 
+    : null;
 
   return (
     <div className="flex flex-wrap gap-2">
@@ -41,6 +44,14 @@ export function TagFilter({ tags, type = "tag" }: TagFilterProps) {
         </Link>
       ))}
     </div>
+  );
+}
+
+export function TagFilter(props: TagFilterProps) {
+  return (
+    <Suspense fallback={<div className="flex flex-wrap gap-2">Loading...</div>}>
+      <TagFilterContent {...props} />
+    </Suspense>
   );
 }
 
