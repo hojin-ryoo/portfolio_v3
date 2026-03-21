@@ -15,6 +15,7 @@ export interface Project {
   githubUrl?: string;
   liveUrl?: string;
   featured?: boolean;
+  published?: boolean;
   timestamp?: string;
   content?: string;
 }
@@ -43,12 +44,14 @@ function getAllProjects(): Project[] {
         githubUrl: data.githubUrl || undefined,
         liveUrl: data.liveUrl || undefined,
         featured: data.featured === true,
+        published: data.published !== false,
         timestamp: data.timestamp || undefined,
         content,
       };
 
       return project;
-    });
+    })
+    .filter((project) => project.published);
 
   // Sort by timestamp if available, otherwise by title
   const sorted = allProjectsData.sort((a, b) => {
@@ -70,6 +73,10 @@ export function getProjectBySlug(slug: string): Project | null {
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
 
+  if (data.published === false) {
+    return null;
+  }
+
   return {
     id: data.filename || slug,
     slug: data.filename || slug,
@@ -79,6 +86,7 @@ export function getProjectBySlug(slug: string): Project | null {
     githubUrl: data.githubUrl || undefined,
     liveUrl: data.liveUrl || undefined,
     featured: data.featured === true,
+    published: true,
     timestamp: data.timestamp || undefined,
     content,
   };
